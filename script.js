@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('海克斯台球: 页面加载完成');
+
     // DOM Elements
     const mainMenu = document.getElementById('main-menu');
     const slotMachine = document.getElementById('slot-machine');
@@ -18,6 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const tierBackBtn = document.getElementById('tier-back-btn');
     const backBtn = document.getElementById('back-btn');
     const newGameBtn = document.getElementById('new-game-btn');
+
+    // 检查关键元素
+    if (!citySelectBtn || !directStartBtn) {
+        console.error('错误: 未找到主菜单按钮');
+        return;
+    }
+    console.log('海克斯台球: 所有按钮已找到');
 
     // State
     let isSpinning = false;
@@ -41,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 16, name: "禁止专精", description: "本局禁止对方使用专精装", tier: "silver" },
         // 黄金阶
         { id: 17, name: "双重打击", description: "本次进球后下一杆可以连续击两次", tier: "gold" },
-        { id: 18, name: "颜色自由", description: "本次击球可以打任意颜色的球，进球算你的并继续", tier: "gold" },
+        { id: 18, name: "搅屎棍", description: "场上若有人打进黑八，则双方交换花色", tier: "gold" },
         { id: 19, name: "窃取", description: "对手下一颗进的球可算作你的，选择场上的任意一球与其交换位置", tier: "gold" },
         { id: 20, name: "自由落位+", description: "获得一颗自由球", tier: "gold" },
         { id: 21, name: "封印角袋", description: "指定一个角袋，对手6回合内不能使用", tier: "gold" },
@@ -63,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 36, name: "摆烂王++", description: "每隔3回合，若你的场上球比对方多，则获得1次自由球", tier: "prismatic" },
         { id: 37, name: "两级反转", description: "立刻与对方交换击球花色（不包括黑8）", tier: "prismatic" },
         { id: 38, name: "翻盘点", description: "若对手场上球比你少3颗以上，你立即获得2次自由球", tier: "prismatic" },
-        { id: 39, name: "集合，一波！", description: "当只剩下最后一颗球时，该球进袋直接获胜，无需打黑8", tier: "prismatic" }
+        { id: 39, name: "集合，一波！", description: "当只剩下最后一颗球时，该球进袋直接获胜，无需打黑8", tier: "prismatic" },
+        { id: 40, name: "精准奇才", description: "本局距离超过半场的击球进了，则可获得一个自由球", tier: "prismatic" }
     ];
 
     const tierNames = {
@@ -75,12 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== Event Listeners ====================
 
     // Main menu
-    citySelectBtn.addEventListener('click', () => {
+    citySelectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('点击: 城邦选择');
         showSection('slot-machine');
         resetSlotMachine();
     });
 
-    directStartBtn.addEventListener('click', () => {
+    directStartBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('点击: 直接开始');
         showSection('tier-selection');
     });
 
@@ -170,7 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopReel(reel, result) {
         reel.classList.remove('spinning');
         const tierIndex = { silver: 0, gold: 1, prismatic: 2 };
-        const offset = tierIndex[result] * -120;
+        // 根据实际reel-item高度计算偏移（支持响应式）
+        const reelItem = reel.querySelector('.reel-item');
+        const itemHeight = reelItem ? reelItem.offsetHeight : 120;
+        const offset = tierIndex[result] * -itemHeight;
         reel.style.transform = `translateY(${offset}px)`;
     }
 
