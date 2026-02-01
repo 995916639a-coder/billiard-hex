@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台球海克斯选择器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>台球海克斯选择器</h1>
+            <p class="subtitle">选择你的增强效果</p>
+        </header>
+
+        <div id="tier-selection" class="tier-selection">
+            <h2>选择海克斯等级</h2>
+            <div class="tier-buttons">
+                <button class="tier-btn silver" data-tier="silver">
+                    <span class="tier-icon">◇</span>
+                    <span class="tier-name">白银阶</span>
+                    <span class="tier-desc">基础增强</span>
+                </button>
+                <button class="tier-btn gold" data-tier="gold">
+                    <span class="tier-icon">◆</span>
+                    <span class="tier-name">黄金阶</span>
+                    <span class="tier-desc">中等增强</span>
+                </button>
+                <button class="tier-btn prismatic" data-tier="prismatic">
+                    <span class="tier-icon">✦</span>
+                    <span class="tier-name">棱彩阶</span>
+                    <span class="tier-desc">高风险高收益</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="card-display" class="card-display hidden">
+            <h2>选择一张海克斯</h2>
+            <div id="cards-container" class="cards-container">
+                <!-- Cards will be inserted here -->
+            </div>
+            <button id="back-btn" class="back-btn">返回选择等级</button>
+        </div>
+
+        <div id="result-display" class="result-display hidden">
+            <h2>你选择了</h2>
+            <div id="selected-card" class="selected-card">
+                <!-- Selected card will be shown here -->
+            </div>
+            <button id="new-game-btn" class="new-game-btn">开始新一局</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #e8e8e8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #88a4c8;
+}
+
+/* Tier Selection */
+.tier-selection h2,
+.card-display h2,
+.result-display h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #c9d4e3;
+}
+
+.tier-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tier-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 50px;
+    border: 2px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+}
+
+.tier-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.tier-btn.silver {
+    border-color: #c0c0c0;
+}
+
+.tier-btn.silver:hover {
+    background: rgba(192, 192, 192, 0.2);
+    box-shadow: 0 0 30px rgba(192, 192, 192, 0.3);
+}
+
+.tier-btn.gold {
+    border-color: #ffd700;
+}
+
+.tier-btn.gold:hover {
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.tier-btn.prismatic {
+    border-color: #e040fb;
+}
+
+.tier-btn.prismatic:hover {
+    background: rgba(224, 64, 251, 0.2);
+    box-shadow: 0 0 30px rgba(224, 64, 251, 0.3);
+}
+
+.tier-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.tier-btn.silver .tier-icon {
+    color: #c0c0c0;
+}
+
+.tier-btn.gold .tier-icon {
+    color: #ffd700;
+}
+
+.tier-btn.prismatic .tier-icon {
+    color: #e040fb;
+    animation: prismatic-glow 2s ease-in-out infinite;
+}
+
+@keyframes prismatic-glow {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(60deg); }
+}
+
+.tier-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tier-desc {
+    font-size: 0.9rem;
+    color: #88a4c8;
+}
+
+/* Cards Display */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.hex-card {
+    width: 280px;
+    padding: 25px;
+    border: 3px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.hex-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.hex-card:hover::before {
+    left: 100%;
+}
+
+.hex-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.hex-card.silver {
+    border-color: #c0c0c0;
+}
+
+.hex-card.silver:hover {
+    box-shadow: 0 15px 40px rgba(192, 192, 192, 0.4);
+}
+
+.hex-card.gold {
+    border-color: #ffd700;
+}
+
+.hex-card.gold:hover {
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+}
+
+.hex-card.prismatic {
+    border-color: #e040fb;
+    animation: prismatic-border 3s linear infinite;
+}
+
+@keyframes prismatic-border {
+    0% { border-color: #e040fb; }
+    33% { border-color: #00bcd4; }
+    66% { border-color: #ffd700; }
+    100% { border-color: #e040fb; }
+}
+
+.hex-card.prismatic:hover {
+    box-shadow: 0 15px 40px rgba(224, 64, 251, 0.4);
+}
+
+.card-tier-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hex-card.silver .card-tier-badge {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #1a1a2e;
+}
+
+.hex-card.gold .card-tier-badge {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a1a2e;
+}
+
+.hex-card.prismatic .card-tier-badge {
+    background: linear-gradient(135deg, #e040fb, #00bcd4);
+    color: #fff;
+}
+
+.card-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #c9d4e3;
+}
+
+/* Selected Card */
+.selected-card {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.selected-card .hex-card {
+    width: 350px;
+    padding: 35px;
+    transform: scale(1.1);
+    cursor: default;
+}
+
+.selected-card .hex-card:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons */
+.back-btn,
+.new-game-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border: 2px solid #88a4c8;
+    border-radius: 30px;
+    background: transparent;
+    color: #88a4c8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover,
+.new-game-btn:hover {
+    background: #88a4c8;
+    color: #1a1a2e;
+}
+
+.new-game-btn {
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.new-game-btn:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Animation for card reveal */
+@keyframes cardReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) rotateY(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateY(0deg);
+    }
+}
+
+.hex-card.reveal {
+    animation: cardReveal 0.5s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .tier-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tier-btn {
+        min-width: 250px;
+    }
+
+    .hex-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .selected-card .hex-card {
+        width: 100%;
+        max-width: 350px;
+        transform: scale(1);
+    }
+}
