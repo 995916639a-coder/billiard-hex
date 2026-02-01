@@ -1,11 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const mainMenu = document.getElementById('main-menu');
+    const slotMachine = document.getElementById('slot-machine');
     const tierSelection = document.getElementById('tier-selection');
     const cardDisplay = document.getElementById('card-display');
     const resultDisplay = document.getElementById('result-display');
     const cardsContainer = document.getElementById('cards-container');
     const selectedCardContainer = document.getElementById('selected-card');
+    const slotResultText = document.getElementById('slot-result-text');
+
+    // Buttons
+    const citySelectBtn = document.getElementById('city-select-btn');
+    const directStartBtn = document.getElementById('direct-start-btn');
+    const spinBtn = document.getElementById('spin-btn');
+    const respinBtn = document.getElementById('respin-btn');
+    const slotBackBtn = document.getElementById('slot-back-btn');
+    const tierBackBtn = document.getElementById('tier-back-btn');
     const backBtn = document.getElementById('back-btn');
     const newGameBtn = document.getElementById('new-game-btn');
+
+    // State
+    let isSpinning = false;
 
     // 所有海克斯卡片数据
     const allCards = [
@@ -57,7 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
         prismatic: '棱彩阶'
     };
 
-    // Tier button click handlers
+    // ==================== Event Listeners ====================
+
+    // Main menu
+    citySelectBtn.addEventListener('click', () => {
+        showSection('slot-machine');
+        resetSlotMachine();
+    });
+
+    directStartBtn.addEventListener('click', () => {
+        showSection('tier-selection');
+    });
+
+    // Slot machine
+    spinBtn.addEventListener('click', startSlotMachine);
+    respinBtn.addEventListener('click', () => {
+        resetSlotMachine();
+        startSlotMachine();
+    });
+    slotBackBtn.addEventListener('click', () => {
+        showSection('main-menu');
+    });
+
+    // Tier selection
+    tierBackBtn.addEventListener('click', () => {
+        showSection('main-menu');
+    });
+
     document.querySelectorAll('.tier-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const tier = btn.dataset.tier;
@@ -65,25 +106,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Back button handler
+    // Card display
     backBtn.addEventListener('click', () => {
         showSection('tier-selection');
     });
 
-    // New game button handler
+    // Result display
     newGameBtn.addEventListener('click', () => {
-        showSection('tier-selection');
+        showSection('main-menu');
     });
 
-    // 随机抽取指定等级的卡片
+    // ==================== Slot Machine Functions ====================
+
+    function getRandomTier() {
+        const rand = Math.random();
+        // 棱彩 40%, 黄金 35%, 白银 25%
+        if (rand < 0.40) return 'prismatic';
+        if (rand < 0.75) return 'gold';
+        return 'silver';
+    }
+
+    function startSlotMachine() {
+        if (isSpinning) return;
+
+        isSpinning = true;
+        spinBtn.disabled = true;
+        spinBtn.classList.add('spinning');
+        spinBtn.textContent = '抽取中...';
+        respinBtn.classList.add('hidden');
+        slotResultText.classList.add('hidden');
+
+        // Generate results
+        const results = [getRandomTier(), getRandomTier(), getRandomTier()];
+
+        // Start spinning
+        const reels = [
+            document.querySelector('#reel1 .reel-inner'),
+            document.querySelector('#reel2 .reel-inner'),
+            document.querySelector('#reel3 .reel-inner')
+        ];
+
+        reels.forEach(reel => reel.classList.add('spinning'));
+
+        // Stop reels one by one
+        setTimeout(() => stopReel(reels[0], results[0]), 1000);
+        setTimeout(() => stopReel(reels[1], results[1]), 1500);
+        setTimeout(() => stopReel(reels[2], results[2]), 2000);
+
+        // Show result
+        setTimeout(() => {
+            isSpinning = false;
+            spinBtn.disabled = false;
+            spinBtn.classList.remove('spinning');
+            spinBtn.textContent = '开始抽取';
+            spinBtn.classList.add('hidden');
+            respinBtn.classList.remove('hidden');
+
+            // Display result text
+            showSlotResult(results);
+        }, 2500);
+    }
+
+    function stopReel(reel, result) {
+        reel.classList.remove('spinning');
+        const tierIndex = { silver: 0, gold: 1, prismatic: 2 };
+        const offset = tierIndex[result] * -120;
+        reel.style.transform = `translateY(${offset}px)`;
+    }
+
+    function showSlotResult(results) {
+        const labels = results.map(tier =>
+            `<span class="tier-label ${tier}">${tierNames[tier]}</span>`
+        ).join(' → ');
+
+        slotResultText.innerHTML = `本局海克斯顺序：${labels}`;
+        slotResultText.classList.remove('hidden');
+    }
+
+    function resetSlotMachine() {
+        const reels = document.querySelectorAll('.reel-inner');
+        reels.forEach(reel => {
+            reel.classList.remove('spinning');
+            reel.style.transform = 'translateY(0)';
+        });
+        spinBtn.classList.remove('hidden');
+        respinBtn.classList.add('hidden');
+        slotResultText.classList.add('hidden');
+    }
+
+    // ==================== Card Functions ====================
+
     function drawCards(tier) {
-        // 筛选指定等级的卡片
         const tierCards = allCards.filter(card => card.tier === tier);
-
-        // 随机打乱
         const shuffled = tierCards.sort(() => Math.random() - 0.5);
-
-        // 取前3张
         const drawnCards = shuffled.slice(0, 3);
 
         displayCards(drawnCards);
@@ -129,7 +244,11 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection('result-display');
     }
 
+    // ==================== UI Functions ====================
+
     function showSection(sectionId) {
+        mainMenu.classList.add('hidden');
+        slotMachine.classList.add('hidden');
         tierSelection.classList.add('hidden');
         cardDisplay.classList.add('hidden');
         resultDisplay.classList.add('hidden');
