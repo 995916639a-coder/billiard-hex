@@ -3,17 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台球海克斯选择器</title>
+    <title>海克斯台球</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>台球海克斯选择器</h1>
+            <h1>海克斯台球</h1>
             <p class="subtitle">选择你的增强效果</p>
         </header>
 
-        <div id="tier-selection" class="tier-selection">
+        <!-- 主菜单 -->
+        <div id="main-menu" class="main-menu">
+            <button id="city-select-btn" class="menu-btn city-btn">
+                <span class="menu-icon">🎰</span>
+                <span class="menu-title">城邦选择</span>
+                <span class="menu-desc">决定等级顺序</span>
+            </button>
+            <button id="direct-start-btn" class="menu-btn direct-btn">
+                <span class="menu-icon">🎯</span>
+                <span class="menu-title">直接开始</span>
+                <span class="menu-desc">选择等级抽卡</span>
+            </button>
+        </div>
+
+        <!-- 老虎机界面 -->
+        <div id="slot-machine" class="slot-machine hidden">
+            <h2>城邦选择</h2>
+            <p class="slot-hint">点击开始决定你的命运</p>
+            <div class="slot-container">
+                <div class="slot-reel" id="reel1">
+                    <div class="reel-inner">
+                        <div class="reel-item silver">◇</div>
+                        <div class="reel-item gold">◆</div>
+                        <div class="reel-item prismatic">✦</div>
+                    </div>
+                </div>
+                <div class="slot-reel" id="reel2">
+                    <div class="reel-inner">
+                        <div class="reel-item silver">◇</div>
+                        <div class="reel-item gold">◆</div>
+                        <div class="reel-item prismatic">✦</div>
+                    </div>
+                </div>
+                <div class="slot-reel" id="reel3">
+                    <div class="reel-inner">
+                        <div class="reel-item silver">◇</div>
+                        <div class="reel-item gold">◆</div>
+                        <div class="reel-item prismatic">✦</div>
+                    </div>
+                </div>
+            </div>
+            <div id="slot-result-text" class="slot-result-text hidden"></div>
+            <div class="slot-buttons">
+                <button id="spin-btn" class="spin-btn">开始抽取</button>
+                <button id="respin-btn" class="respin-btn hidden">再抽一次</button>
+            </div>
+            <button id="slot-back-btn" class="back-btn">返回主菜单</button>
+        </div>
+
+        <!-- 等级选择界面 -->
+        <div id="tier-selection" class="tier-selection hidden">
             <h2>选择海克斯等级</h2>
             <div class="tier-buttons">
                 <button class="tier-btn silver" data-tier="silver">
@@ -29,11 +79,13 @@
                 <button class="tier-btn prismatic" data-tier="prismatic">
                     <span class="tier-icon">✦</span>
                     <span class="tier-name">棱彩阶</span>
-                    <span class="tier-desc">高风险高收益</span>
+                    <span class="tier-desc">终极增强</span>
                 </button>
             </div>
+            <button id="tier-back-btn" class="back-btn" style="margin-top: 30px;">返回主菜单</button>
         </div>
 
+        <!-- 卡片展示 -->
         <div id="card-display" class="card-display hidden">
             <h2>选择一张海克斯</h2>
             <div id="cards-container" class="cards-container">
@@ -42,6 +94,7 @@
             <button id="back-btn" class="back-btn">返回选择等级</button>
         </div>
 
+        <!-- 结果展示 -->
         <div id="result-display" class="result-display hidden">
             <h2>你选择了</h2>
             <div id="selected-card" class="selected-card">
