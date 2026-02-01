@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 12, name: "铁壁防守", description: "本局击打的白球进袋和黑球提前进袋不算", tier: "silver" },
         { id: 14, name: "边角料", description: "若进的是贴库球，下一杆可获得1次额外击球机会", tier: "silver" },
         { id: 15, name: "弹幕射击", description: "本杆白球触碰到3颗以上的球，获得自由球", tier: "silver" },
-        { id: 16, name: "禁止专精", description: "本局禁止对方使用专精装", tier: "silver" },
+        { id: 16, name: "禁止专精", description: "本局禁止对方使用专精装和擦杆橡皮", tier: "silver" },
         // 黄金阶
         { id: 17, name: "双重打击", description: "本次进球后下一杆可以连续击两次", tier: "gold" },
         { id: 18, name: "搅屎棍", description: "场上若有人打进黑八，则双方交换花色", tier: "gold" },
