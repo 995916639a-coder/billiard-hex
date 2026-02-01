@@ -37,6 +37,238 @@ header h1 {
     color: #88a4c8;
 }
 
+/* Main Menu */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 60px;
+    border: 3px solid;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+    min-width: 250px;
+}
+
+.menu-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.city-btn {
+    border-color: #e040fb;
+    background: linear-gradient(135deg, rgba(224, 64, 251, 0.1), rgba(0, 188, 212, 0.1));
+}
+
+.city-btn:hover {
+    box-shadow: 0 0 40px rgba(224, 64, 251, 0.4);
+}
+
+.direct-btn {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+}
+
+.direct-btn:hover {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+}
+
+.menu-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.menu-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.menu-desc {
+    font-size: 1rem;
+    color: #88a4c8;
+}
+
+/* Slot Machine */
+.slot-machine {
+    text-align: center;
+}
+
+.slot-machine h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #e040fb;
+}
+
+.slot-hint {
+    font-size: 1.1rem;
+    color: #88a4c8;
+    margin-bottom: 40px;
+}
+
+.slot-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.slot-reel {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #e040fb;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.6);
+    position: relative;
+    box-shadow: 0 0 20px rgba(224, 64, 251, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.reel-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.reel-item {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.reel-item.silver {
+    color: #c0c0c0;
+    text-shadow: 0 0 20px rgba(192, 192, 192, 0.8);
+}
+
+.reel-item.gold {
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.reel-item.prismatic {
+    color: #e040fb;
+    text-shadow: 0 0 20px rgba(224, 64, 251, 0.8);
+    animation: prismatic-glow 2s ease-in-out infinite;
+}
+
+.spin-btn {
+    padding: 20px 60px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 3px solid #e040fb;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #e040fb, #00bcd4);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.spin-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(224, 64, 251, 0.6);
+}
+
+.spin-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.spin-btn.spinning {
+    animation: pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.slot-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.respin-btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 3px solid #ffd700;
+    border-radius: 50px;
+    background: transparent;
+    color: #ffd700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.respin-btn:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.slot-result-text {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.slot-result-text .tier-label {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.slot-result-text .tier-label.silver {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #1a1a2e;
+}
+
+.slot-result-text .tier-label.gold {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a1a2e;
+}
+
+.slot-result-text .tier-label.prismatic {
+    background: linear-gradient(135deg, #e040fb, #00bcd4);
+    color: #fff;
+}
+
+/* Spinning Animation */
+@keyframes spin {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-360px); }
+}
+
+.reel-inner.spinning {
+    animation: spin 0.15s linear infinite;
+}
+
 /* Tier Selection */
 .tier-selection h2,
 .card-display h2,
@@ -313,10 +545,64 @@ header h1 {
     animation: cardReveal 0.5s ease forwards;
 }
 
+/* Slot Result Display */
+.slot-result {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+.slot-result-item {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.slot-result-item.silver {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #1a1a2e;
+}
+
+.slot-result-item.gold {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a1a2e;
+}
+
+.slot-result-item.prismatic {
+    background: linear-gradient(135deg, #e040fb, #00bcd4);
+    color: #fff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-btn {
+        min-width: 280px;
+        padding: 30px 40px;
+    }
+
+    .slot-container {
+        gap: 10px;
+    }
+
+    .slot-reel {
+        width: 90px;
+        height: 90px;
+    }
+
+    .reel-item {
+        height: 90px;
+        font-size: 3rem;
     }
 
     .tier-buttons {
