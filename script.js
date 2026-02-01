@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 37, name: "两级反转", description: "立刻与对方交换击球花色（不包括黑8）", tier: "prismatic" },
         { id: 38, name: "翻盘点", description: "若对手场上球比你少3颗以上，你立即获得2次自由球", tier: "prismatic" },
         { id: 39, name: "集合，一波！", description: "当只剩下最后一颗球时，该球进袋直接获胜，无需打黑8", tier: "prismatic" },
-        { id: 40, name: "精准奇才", description: "本局距离超过半场的击球进了，则可获得一个自由球", tier: "prismatic" }
+        { id: 40, name: "精准奇才", description: "本局距离超过半场的击球进了，则可获得一个自由球", tier: "prismatic" },
+        { id: 41, name: "恶魔契约", description: "（仅开局可选）分球后移除你的所有球，只留黑8，但每打不进一次，对方便可移除一颗球并获一球自由", tier: "prismatic" }
     ];
 
     const tierNames = {
