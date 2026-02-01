@@ -56,6 +56,10 @@ header h1 {
     transition: all 0.3s ease;
     background: rgba(0, 0, 0, 0.4);
     min-width: 250px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .menu-btn:hover {
@@ -179,6 +183,8 @@ header h1 {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .spin-btn:hover {
@@ -218,6 +224,8 @@ header h1 {
     color: #ffd700;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .respin-btn:hover {
@@ -297,6 +305,10 @@ header h1 {
     transition: all 0.3s ease;
     background: rgba(0, 0, 0, 0.3);
     min-width: 200px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .tier-btn:hover {
@@ -384,6 +396,8 @@ header h1 {
     background: rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .hex-card::before {
@@ -506,6 +520,8 @@ header h1 {
     color: #88a4c8;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .back-btn:hover,
