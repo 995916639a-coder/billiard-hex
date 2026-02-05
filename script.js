@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 36, name: "一板一眼", description: "（开局可选）你场上的球减半，但对手每回合结束后，还可以再击一次球", tier: "gold" },
         
         // 棱彩阶
-        { id: 37, name: "你不准win", description: "（立刻使用）将场上对方的一颗球移除，3回合后，该球将被重新放置到黑8的初始位置，你获得1次自由球，在此移除期间对手不可获得胜利", tier: "prismatic" },
+        { id: 37, name: "你不准win", description: "（立刻使用）将场上对方的一颗球移除，3回合后，该球将被重新放置到黑8的初始位置，你获得1次自由球，在此移除期间对手不可获得胜利(若对方只剩8号，可以移除黑8）", tier: "prismatic" },
         { id: 38, name: "预见未来", description: "每2个回合，对手必须提前告知下回合碰到哪颗球，若没碰到，则你获得1次自由球", tier: "prismatic" },
         { id: 39, name: "片叶不沾身", description: "（全局可用）使用前说明自己本杆挑战“片叶不沾身”，若此球碰到四边库且没有碰到任何球，则获得2次自由球，（此球空杆不算犯规，但若过程中碰撞到对方球，则对方获得1次自由球）", tier: "prismatic" },
         { id: 40, name: "翻袋宣言", description: "本局只要宣布本杆打翻袋成功进球，成功获得2次自由球", tier: "prismatic" },
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         onlyStage3: [],
 
         // 不能在第一阶段选择的海克斯ID
-        notStage1: [45,46],
+        notStage1: [45,46,37],
 
         // 不能在第三阶段选择的海克斯ID
         notStage3: [50]
