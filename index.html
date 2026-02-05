@@ -62,6 +62,15 @@
             <button id="slot-back-btn" class="back-btn">返回主菜单</button>
         </div>
 
+        <!-- 已选海克斯展示区 -->
+        <div id="selected-hex-panel" class="selected-hex-panel hidden">
+            <h3>已选海克斯 (<span id="selected-count">0</span>/3)</h3>
+            <div id="selected-hex-list" class="selected-hex-list">
+                <!-- Selected hex cards will be shown here -->
+            </div>
+            <button id="clear-selection-btn" class="clear-btn hidden">清空选择</button>
+        </div>
+
         <!-- 等级选择界面 -->
         <div id="tier-selection" class="tier-selection hidden">
             <h2>选择海克斯等级</h2>
@@ -82,12 +91,42 @@
                     <span class="tier-desc">终极增强</span>
                 </button>
             </div>
+            <!-- 回合计数器 -->
+            <div id="round-counters" class="round-counters">
+                <div class="counter-item">
+                    <span class="counter-label">回合计数器1</span>
+                    <div class="counter-controls">
+                        <button class="counter-btn minus" data-index="0">−</button>
+                        <span class="counter-value" id="counter-0">0</span>
+                        <button class="counter-btn plus" data-index="0">+</button>
+                        <button class="counter-btn reset" data-index="0">↺</button>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-label">回合计数器2</span>
+                    <div class="counter-controls">
+                        <button class="counter-btn minus" data-index="1">−</button>
+                        <span class="counter-value" id="counter-1">0</span>
+                        <button class="counter-btn plus" data-index="1">+</button>
+                        <button class="counter-btn reset" data-index="1">↺</button>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-label">回合计数器3</span>
+                    <div class="counter-controls">
+                        <button class="counter-btn minus" data-index="2">−</button>
+                        <span class="counter-value" id="counter-2">0</span>
+                        <button class="counter-btn plus" data-index="2">+</button>
+                        <button class="counter-btn reset" data-index="2">↺</button>
+                    </div>
+                </div>
+            </div>
             <button id="tier-back-btn" class="back-btn" style="margin-top: 30px;">返回主菜单</button>
         </div>
 
         <!-- 卡片展示 -->
         <div id="card-display" class="card-display hidden">
-            <h2>选择一张海克斯</h2>
+            <h2 id="card-display-title">选择一张海克斯</h2>
             <div id="cards-container" class="cards-container">
                 <!-- Cards will be inserted here -->
             </div>
