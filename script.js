@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 41, name: "双倍封印", description: "指定任意两个不同排但可同列（比如两个中袋为同一排）的袋口，对手本局不能使用", tier: "prismatic" },
         { id: 42, name: "我有黑哨", description: "本局的下5次犯规不算", tier: "prismatic" },
         { id: 43, name: "轨道镭射", description: "每隔3回合，可以选择将摆球三角架放置在球台任意位置，放置持续双方各一杆", tier: "prismatic" },
-        { id: 44, name: "利滚利++", description: "进行判定：若此刻你的场上球比对方少，则获得1次自由球", tier: "prismatic" },
-        { id: 45, name: "摆烂王++", description: "进行判定：若此刻你的场上球比对方多，则获得1次自由球", tier: "prismatic" },
+        { id: 44, name: "利滚利++", description: "进行判定：若此刻你的场上球比对方少，则获得1次自由球，然后每4回合判定一次", tier: "prismatic" },
+        { id: 45, name: "摆烂王++", description: "进行判定：若此刻你的场上球比对方多，则获得1次自由球，然后每3回合判定一次", tier: "prismatic" },
         { id: 46, name: "两级反转", description: "（立刻使用）与对方交换击球花色（不包括黑8）", tier: "prismatic" },
-        { id: 47, name: "翻盘点", description: "（立刻使用）若此刻对手场上球领先你3颗或以上，你立即获得2次自由球", tier: "prismatic" },
+        { id: 47, name: "翻盘点", description: "（立刻使用）若此刻对手场上球领先你3颗或以上，你立即获得3次自由球", tier: "prismatic" },
         { id: 48, name: "集合，一波！", description: "当你只剩下最后一颗球时，该球进袋直接获胜，无需打黑8", tier: "prismatic" },
-        { id: 49, name: "精准奇才", description: "（全局可用）你打进了距离超过半场的球，则可获得1次自由球", tier: "prismatic" },
-        { id: 50, name: "连拨击锤", description: "（全局可用）你击打的白球碰到3颗或以上球时，获得1次自由球", tier: "prismatic" },
+        { id: 49, name: "精准奇才", description: "（全局可用）当你打进了距离超过半场的球，则可获得1次自由球", tier: "prismatic" },
+        { id: 50, name: "连拨击锤", description: "（全局可用）立刻获得1颗自由球，你击打的白球碰到3颗或以上球时，获得1次自由球", tier: "prismatic" },
         { id: 51, name: "混沌召唤", description: "（立刻使用）将对手的所有场上的球重新聚拢摆放在球台中央", tier: "prismatic" },
         { id: 52, name: "恶魔契约", description: "（仅开局可选）分球后移除你的所有球，只留黑8，但每打不进一次，对方便可移除一颗球并获一球自由", tier: "prismatic" },
         { id: 53, name: "重质不重量", description: "（立刻使用）选择你场上的一颗球变为对手的", tier: "prismatic" },
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         notStage1: [45,46],
 
         // 不能在第三阶段选择的海克斯ID
-        notStage3: []
+        notStage3: [50]
     };
 
     const tierNames = {
