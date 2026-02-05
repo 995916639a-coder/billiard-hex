@@ -540,6 +540,224 @@ header h1 {
     color: #1a1a2e;
 }
 
+/* Selected Hex Panel */
+.selected-hex-panel {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.selected-hex-panel h3 {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.selected-hex-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.selected-hex-item {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 18px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid;
+    position: relative;
+    cursor: default;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.selected-hex-item:hover {
+    transform: translateY(-3px);
+}
+
+.selected-hex-item.silver {
+    border-color: #c0c0c0;
+    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.2);
+}
+
+.selected-hex-item.gold {
+    border-color: #ffd700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.selected-hex-item.prismatic {
+    border-color: #e040fb;
+    box-shadow: 0 4px 15px rgba(224, 64, 251, 0.2);
+}
+
+.hex-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.hex-index {
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.hex-name {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.15rem;
+    flex: 1;
+}
+
+.hex-tier-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.selected-hex-item.silver .hex-tier-badge {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #1a1a2e;
+}
+
+.selected-hex-item.gold .hex-tier-badge {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a1a2e;
+}
+
+.selected-hex-item.prismatic .hex-tier-badge {
+    background: linear-gradient(135deg, #e040fb, #00bcd4);
+    color: #fff;
+}
+
+.hex-item-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #c9d4e3;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.remove-hex-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 100, 100, 0.8);
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.remove-hex-btn:hover {
+    background: #ff4444;
+    transform: scale(1.1);
+}
+
+.clear-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: 2px solid #ff6b6b;
+    border-radius: 25px;
+    background: transparent;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.clear-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* Round Counters */
+.round-counters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.counter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.counter-label {
+    font-size: 0.85rem;
+    color: #88a4c8;
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.counter-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.counter-btn.reset {
+    font-size: 0.9rem;
+}
+
+.counter-value {
+    min-width: 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
 /* Utility */
 .hidden {
     display: none !important;
@@ -639,5 +857,23 @@ header h1 {
         width: 100%;
         max-width: 350px;
         transform: scale(1);
+    }
+
+    .selected-hex-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selected-hex-item {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hex-name {
+        font-size: 1rem;
+    }
+
+    .hex-item-description {
+        font-size: 0.9rem;
     }
 }
